@@ -6,6 +6,7 @@ def filterBible(scripture, book, chapter):
             my_filter.append(id_script)
     return my_filter
 
+
 scripture=["01001001", "01001002", "01002001", "01002002", "01002003", "02001001", "02001002", "02001003"]
 book="01"
 chapter="001"

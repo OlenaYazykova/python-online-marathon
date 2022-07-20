@@ -4,6 +4,7 @@ def priority(y):
     elif y in ['+', '-']:
         return 1
 
+
 def toPostFixExpression(e):
     stack = []
     post = []
@@ -30,6 +31,7 @@ def toPostFixExpression(e):
     while stack:
         post.append(stack.pop())
     return post
+
 
 e=["20","+","3","*","(","5","*","4",")"]
 print(toPostFixExpression(e))

@@ -15,5 +15,6 @@ def order(a):
                 return "not sorted"
         return "descending"
 
+
 a=[10,5,4]
 print(order(a))

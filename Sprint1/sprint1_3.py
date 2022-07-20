@@ -12,4 +12,5 @@ def isPalindrome(str):
     else:
         return False
 
+
 print(isPalindrome("trueistrue"))

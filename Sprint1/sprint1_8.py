@@ -16,5 +16,6 @@ def studying_hours(a):
     else:
         return length_subbarray
 
+
 a=[2,2,1,3,4,1]
 print(studying_hours(a))

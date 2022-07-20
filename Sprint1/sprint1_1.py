@@ -11,4 +11,5 @@ def kthTerm(n, k):
     #print(seq1)
     return seq1[k-1]
 
+
 print(kthTerm(30,100))

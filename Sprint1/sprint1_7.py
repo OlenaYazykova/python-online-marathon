@@ -14,6 +14,7 @@ def Cipher_Zeroes(N):
         M_bin+=str(M%2)
         M//=2
     return int(M_bin[::-1]) 
+   
         
 N="565" 
 print(Cipher_Zeroes(N))
