@@ -1,7 +1,7 @@
 class Employee:
     def __init__(self, full_name, **kwargs):
-        setattr(self, 'name', full_name.split(" ")[0])
-        setattr(self, 'lastname', full_name.split(" ")[1])
+        setattr(self, 'name', full_name.split()[0])
+        setattr(self, 'lastname', full_name.split()[1])
         for key in kwargs:
             setattr(self, key, kwargs[key])
 
