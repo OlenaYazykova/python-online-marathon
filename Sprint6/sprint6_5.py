@@ -17,19 +17,20 @@ class SerializeManager:
         self.type=type
 
     def __enter__(self):
+        if self.type==FileType.JSON:
+            self.file=open(self.filename, "w")
+        elif self.type==FileType.BYTE:
+            self.file=open(self.filename, 'wb')
         return self
 
     def __exit__(self, type, value, traceback):
-        pass
+        self.file.close()
 
     def serialize(self, object):
-        self.object=object
         if self.type==FileType.JSON:
-            with open(self.filename, "w") as file:
-                data = json.dump(self.object, file)
+            json.dump(object, self.file)
         elif self.type==FileType.BYTE:
-            with open(self.filename, 'wb') as file:
-                pickle.dump(self.object, file)
+            pickle.dump(object, self.file)
 
 
 def serialize(object, filename, fileType):
@@ -37,6 +38,22 @@ def serialize(object, filename, fileType):
         manager.serialize(object)
 
 
+print(isinstance(serialize.__globals__['SerializeManager'], object))
+print(issubclass(FileType, Enum))
+
 print (str(path.exists('1')))
 serialize("String", "1", FileType.JSON)
 print (str(path.exists('1')))
+
+user_dict = {"name": "Hallo", "id" : 2}
+serialize(user_dict, "2", FileType.BYTE)
+with open("2", "rb") as file:
+    print(pickle.load(file))
+
+user_dict = {"name": "Hallo", "id" : 2}
+serialize(user_dict, "2", FileType.JSON)
+
+data = {"prop1": "value1", "prop2" : "value2"}
+with SerializeManager("test_4.json", FileType.JSON) as user:
+    user.serialize(data)
+    
